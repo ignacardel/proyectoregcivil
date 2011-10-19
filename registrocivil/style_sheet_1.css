@@ -1,0 +1,137 @@
+/*new style*/
+
+body {
+background-color: #d2caa6;
+margin-top: 100px;
+padding: 0px;font-family: Arial;
+text-decoration: none;}
+
+a:link {
+color: #06810a;
+
+text-decoration: none;}
+
+a:visited{color: #06810a;
+
+text-decoration: none;}
+
+a:hover{color: #06810a;
+text-decoration: underline;
+}
+
+#wrapper {
+
+	width: 800px;
+    background-color: #d3d3d3;
+    margin: 0 auto;
+    padding: 20px;
+    border-top: 3px #bfbfbf outset;
+    border-left: 3px #bfbfbf outset;
+    border-right: 3px #bfbfbf inset;
+    border-bottom: 3px #a5a5a5 inset;
+    }
+
+#header {
+	border: 1px #a5a5a5 solid;
+	background-color: #ffffff;
+        height: 100px;
+	width: 800px;
+    background-image: url(images/1.jpg);
+    background-repeat: no-repeat;
+            background-position: right;
+}
+
+
+#menu {
+	border-bottom: 1px #a5a5a5 solid;
+	border-left: 1px #a5a5a5 solid;
+	border-right: 1px #a5a5a5 solid;
+	background-color: #b6ff19;
+	width: 800px;
+    text-align: center;
+    text-transform: uppercase; font-style: none;
+    }
+
+
+#menu UL {
+	PADDING-RIGHT: 0px; 
+	PADDING-LEFT: 0px; 
+	PADDING-BOTTOM: 5px; 
+	MARGIN: 0px; 
+	PADDING-TOP: 5px
+}
+#menu UL LI {
+	PADDING-RIGHT: 10px; 
+	DISPLAY: inline; 
+	PADDING-LEFT: 10px; 
+	PADDING-BOTTOM: 0px; 
+	MARGIN: 0px; 
+	PADDING-TOP: 0px; 
+	LIST-STYLE-TYPE: none;
+}
+
+#menu UL LI A {
+	COLOR: #516819;
+    text-decoration: none;
+    }
+    
+#menu UL LI A:hover {
+	BORDER-TOP-WIDTH: 0px; 
+	BORDER-LEFT-WIDTH: 0px;                     BORDER-BOTTOM-WIDTH: 0px; 
+	COLOR: #2a0aff; 
+	BORDER-RIGHT-WIDTH: 0px;
+}
+
+#main {
+	border-bottom: 1px #a5a5a5 solid;
+	border-left: 1px #a5a5a5 solid;
+	border-right: 1px #a5a5a5 solid;
+	background-color: #ffffff;
+        padding: 10px;
+	width: 780px;
+text-align: justify;}	
+#main p{
+       font-size: 16px;}
+       
+#main a:hover{color: #06810a;
+text-decoration: underline;
+font-style: italic;}
+#footer{border-bottom: 1px #a5a5a5 solid;
+	border-left: 1px #a5a5a5 solid;
+	border-right: 1px #a5a5a5 solid;
+	background-color: #ffffff;
+        padding-top: 5px;
+        padding-bottom: 5px;
+	width: 800px;}
+
+#footer p {
+    font-size: 10px;
+text-align: center;}#jezici{
+text-align: center;}
+
+/* IMAGES */		
+		
+		a img{
+	  		border: none;
+	  	}
+
+		img.left,img.center,img.right {
+	  		padding: 4px;
+	  		border: 1px dashed #dcc547;;
+	  		margin: 0px;
+	  	}
+
+		img.left {
+	  		float: left;
+	  		margin: 0 12px 5px 0;
+	  	}
+
+		img.center {
+			display: block;
+	  		margin: 0 auto 5px auto;
+	  	}
+	
+		img.right {
+	  		float: right;
+	  		margin: 0 0 5px 12px;
+	  	}
