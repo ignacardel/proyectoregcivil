@@ -1,0 +1,60 @@
+<script language="javascript">
+
+
+    function validar()
+    {
+
+        if (document.form1.nombre.value.length == 0 || document.form1.apellido.value.length == 0)
+        {
+            document.getElementById('mensaje').innerHTML = 'Debe llenar todos los campos!';
+            return 0;
+        }
+
+        document.form1.submit();
+
+    }
+
+</script>
+
+
+<form id="form1" name="form1" method="post" action="../php/modificarAutoridad.php">
+    <h2 align="center">Modificar Autoridad Civil</h2>
+
+    <table align="center" width="232" border="0">
+
+        <tr>
+            <td width="72">C.I.</td>
+            <td width="144"><input name="ci" type="text" readonly="readonly" id="ci" value="{ci}" maxlength="10" /></td>
+        </tr>
+
+        <tr>
+            <td>Nombre</td>
+            <td><input name="nombre" type="text" id="nombre" value="{nombre}" maxlength="50" /></td>
+        </tr>
+
+        <tr>
+            <td>Apellido</td>
+            <td><input name="apellido" type="text" id="apellido" value="{apellido}" maxlength="50" /></td>
+        </tr>
+    </table>
+    <table align="center">
+        <tr>
+            <td colspan="2"><div align="center">
+                    <input type="button" value="Modificar" onclick="validar()"/>
+                </div></td>
+        </tr>
+    </table>
+    <table align="center">
+        <tr>
+            <td colspan="2" id="mensaje" align="center">{mensaje}</td>
+        </tr>
+    </table>
+    <table align="center" width="229" border="0">
+        <tr>
+            <td width="247" height="21" colspan="2" align="center" id="mensaje2">
+                    <p><a href="../PHP/autoridadesCiviles.php">Cancelar</a></p>
+                </td>
+        </tr>
+    </table>
+
+</form>
