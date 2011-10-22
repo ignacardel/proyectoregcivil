@@ -9,29 +9,31 @@ $plantilla = new Panel("../html/plantilla.htm");
 
 $pnlcontenido = new Panel("../html/autoridadesCiviles.html");
 
-$tabla_completa = "";
-
-
 $result = mysql_query("select * from autoridad order by apellido,nombre");
 
-while ($row = mysql_fetch_array($result)) {
-    $tabla =
- '  <table width="716" border="0">
-    <tr>
-      <td>' . $row['apellido'] . '  ,  ' . $row['nombre'] . '</td>
-      <td  width="149"><a href="../php/modificarAutoridad.php?autoridad=' . $row["ci"] . '">Modificar</a></td>
-    </tr>
-  </table>';
+if ($result != false) { //Si hay autoridades
+    $tabla_completa = "";
+    while ($row = mysql_fetch_array($result)) {
+        $tabla =
+     '  <table width="716" border="0">
+        <tr>
+        <td>' . $row['apellido'] . '  , ' . $row['nombre'] . '</td>
+          <td  width="149"><a href="../php/modificarAutoridad.php?autoridad=' . $row["ci"] . '">Modificar</a></td>
+        </tr>
+      </table>';
+        
+        $tabla_completa = $tabla_completa . $tabla;
+    }
 
-    $tabla_completa = $tabla_completa . $tabla;
+    $pnlcontenido->add("informacion", $tabla_completa);
+    mysql_free_result($result);
+    
+} else { //Si no hay autoridades
+    $msg = '<p>No hay Autoridades Civiles registradas.</p>';
+    $pnlcontenido->add("informacion", $msg);
 }
 
-mysql_free_result($result);
-
-$pnlcontenido->add("informacion", $tabla_completa);
-
 $plantilla->add("contenido", $pnlcontenido);
-
 $plantilla->show();
 include "../db/cerrar_conexion.php";
 ?>
