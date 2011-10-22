@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 18, 2011 at 02:52 AM
+-- Generation Time: Oct 22, 2011 at 07:47 PM
 -- Server version: 5.1.44
 -- PHP Version: 5.3.1
 
@@ -47,11 +47,6 @@ CREATE TABLE IF NOT EXISTS `adquisicion_nacionalidad` (
   KEY `fk_autoridad` (`fk_autoridad`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `adquisicion_nacionalidad`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -60,14 +55,10 @@ CREATE TABLE IF NOT EXISTS `adquisicion_nacionalidad` (
 
 CREATE TABLE IF NOT EXISTS `autoridad` (
   `ci` int(11) NOT NULL,
-  `nombre_completo` varchar(50) NOT NULL,
+  `nombre` varchar(50) NOT NULL,
+  `apellido` varchar(50) NOT NULL,
   PRIMARY KEY (`ci`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `autoridad`
---
-
 
 -- --------------------------------------------------------
 
@@ -88,11 +79,6 @@ CREATE TABLE IF NOT EXISTS `naturalizacion` (
   PRIMARY KEY (`id`),
   KEY `fk_autoridad` (`fk_autoridad`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `naturalizacion`
---
-
 
 -- --------------------------------------------------------
 
@@ -120,11 +106,6 @@ CREATE TABLE IF NOT EXISTS `renuncia_nacionalidad` (
   PRIMARY KEY (`id`),
   KEY `fk_autoridad` (`fk_autoridad`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `renuncia_nacionalidad`
---
-
 
 --
 -- Constraints for dumped tables

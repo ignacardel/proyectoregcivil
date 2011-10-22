@@ -18,7 +18,7 @@ if (($ci) && ($nombre) && ($apellido)) {
         $pnlcontenido->add("nombre", $nombre);
         $pnlcontenido->add("apellido", $apellido);
         $pnlcontenido->add("ci", $ci);
-        $pnlcontenido->add("mensaje", 'Ya existe una Autoridad Civil registrada con la C.I.' . $ci);
+        $pnlcontenido->add("mensaje", 'Ya existe una Autoridad Civil registrada con la C.I. ' . $ci);
         $plantilla->add("contenido", $pnlcontenido);
         $plantilla->show();
         
