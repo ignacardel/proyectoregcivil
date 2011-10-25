@@ -11,7 +11,7 @@ $pnlcontenido = new Panel("../html/autoridadesCiviles.html");
 
 $result = mysql_query("select * from autoridad order by apellido,nombre");
 
-if ($result != false) { //Si hay autoridades
+if (mysql_num_rows($result)!=0) { //Si hay autoridades
     $tabla_completa = "";
     while ($row = mysql_fetch_array($result)) {
         $tabla =
