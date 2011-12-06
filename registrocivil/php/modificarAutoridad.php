@@ -11,7 +11,7 @@ extract($_REQUEST);
 if (($nombre) && ($apellido)) {
 
     mysql_query("UPDATE autoridad SET  nombre='$nombre',apellido='$apellido'  WHERE ci='$ci'");
-    echo "<script type=\"text/javascript\">alert(\"Operacion realizada\"); window.location='autoridadesCiviles.php';</script>";
+    echo "<script type=\"text/javascript\">alert(\"Operacion realizada con éxito\"); window.location='autoridadesCiviles.php';</script>";
     
 } else if ($ci_modificar) {
     
