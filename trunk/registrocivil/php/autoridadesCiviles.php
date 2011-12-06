@@ -5,6 +5,7 @@ $pathFix = dirname(__FILE__);
 require_once ("../classes/Panel.php");
 include "../db/conexion.php";
 
+
 $plantilla = new Panel("../html/plantilla.htm");
 
 $pnlcontenido = new Panel("../html/autoridadesCiviles.html");
