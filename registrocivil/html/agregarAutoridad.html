@@ -6,11 +6,15 @@
 
         if (document.form1.nombre.value.length == 0 || document.form1.apellido.value.length == 0 || document.form1.ci.value.length == 0)
         {
-            document.getElementById('mensaje').innerHTML = 'Debe llenar todos los campos!';
+            alert('Debe llenar todos los campos!');
             return 0;
         }
 
-        document.form1.submit();
+        var answer = confirm("¿Está seguro(a)?")
+        if (answer)
+            document.form1.submit();
+        else
+            return 0;
 
     }
 
