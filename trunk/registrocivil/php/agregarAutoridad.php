@@ -24,7 +24,7 @@ if (($ci) && ($nombre) && ($apellido)) {
         
     } else {
         mysql_query("INSERT INTO autoridad  VALUES ('$ci','$nombre','$apellido');");
-        echo "<script type=\"text/javascript\">alert(\"Operacion realizada\"); window.location='autoridadesCiviles.php';</script>";
+        echo "<script type=\"text/javascript\">alert(\"Operacion realizada con éxito\"); window.location='autoridadesCiviles.php';</script>";
     }
 } else {
     
