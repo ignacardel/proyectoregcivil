@@ -31,19 +31,27 @@ function acceptNum(evt){
 
 function cambiarOpciones(){
     if (document.form1.tipoid.value=='ci')
+    {
         document.form1.tipoci.style.visibility='visible';
+        document.form1.id_buscar.setAttribute("onKeyPress", "return acceptNum(event)");
+        document.form1.id_buscar.value="";
+    }
     else
+    {
         document.form1.tipoci.style.visibility='hidden';
+        document.form1.id_buscar.removeAttribute("onKeyPress");
+        document.form1.id_buscar.value="";
+    }
 }
 </script>
 
 
 
 <h2 align="center">Renuncia a la Nacionalidad Venezolana</h2>
-<form id="form1" name="form1" method="post" action="../php/buscarAutoridad.php">
+<form id="form1" name="form1" method="post" action="../php/buscarRenuncia.php">
     <table width="902" border="0">
         <tr>
-            <th height="54" colspan="6" scope="col"><a href="../php/nuevaActaRenunida.php">Nueva acta</a></th>
+            <th height="54" colspan="6" scope="col"><a href="../php/nuevaActaRenuncia.php">Nueva acta</a></th>
         </tr>
         <tr>
             <th>
@@ -55,7 +63,7 @@ function cambiarOpciones(){
                     <option value="v" selected="selected">V-</option>
                     <option value="e" >E-</option>
                 </select>
-                <input type="text" maxlength="10" name="id_buscar" id="id_buscar" onKeyPress="return acceptNum(event)" />
+                <input type="text" maxlength="15" name="id_buscar" id="id_buscar" onKeyPress="return acceptNum(event)" />
                 <input type="button" value="Buscar Acta" onclick="validar()"/></th>
         </tr>
     </table>
