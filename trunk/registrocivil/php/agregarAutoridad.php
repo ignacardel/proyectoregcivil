@@ -13,12 +13,13 @@ if (($ci) && ($nombre) && ($apellido)) {
     $row = mysql_fetch_array($result);
     if ($row) {
         $plantilla = new Panel("../html/plantilla.htm");
+        $plantilla->add("onload",'onload="repetido('.$ci.')"');
 
         $pnlcontenido = new Panel("../html/agregarAutoridad.html");
         $pnlcontenido->add("nombre", $nombre);
         $pnlcontenido->add("apellido", $apellido);
         $pnlcontenido->add("ci", $ci);
-        $pnlcontenido->add("mensaje", 'Ya existe una Autoridad Civil registrada con la C.I. ' . $ci);
+        //$pnlcontenido->add("mensaje", 'Ya existe una Autoridad Civil registrada con la C.I. ' . $ci);
         $plantilla->add("contenido", $pnlcontenido);
         $plantilla->show();
         
