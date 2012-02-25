@@ -1,0 +1,215 @@
+<script language="javascript">
+
+
+    function repetido(id,tipo)
+    {
+        
+        alert('Ya existe una Acta de Renuncia a la Nacionalidad Venezolana registrada para '+id);
+    }
+
+
+    function validar()
+    {
+
+        if (document.form1.nombre.value.length == 0 || document.form1.apellido.value.length == 0)
+        {
+            alert('Debe llenar todos los campos!');
+            return 0;
+        }
+
+        var answer = confirm("¿Está seguro(a)?")
+        if (answer)
+            document.form1.submit();
+        else
+            return 0;
+
+    }
+
+    var nav4 = window.Event ? true : false;
+    function acceptNum(evt){
+        // NOTE: Backspace = 8, Enter = 13, '0' = 48, '9' = 57
+        var key = nav4 ? evt.which : evt.keyCode;
+        return (key <= 13 || (key >= 48 && key <= 57));
+    }
+
+
+    function cambiarOpciones(){
+        if (document.form1.tipoid.value=='ci')
+        {
+            document.form1.tipoci.style.visibility='visible';
+            document.form1.id.setAttribute("onKeyPress", "return acceptNum(event)");
+            document.form1.id.value="";
+        }
+        else
+        {
+            document.form1.tipoci.style.visibility='hidden';
+            document.form1.id.removeAttribute("onKeyPress");
+            document.form1.id.value="";
+        }
+    }
+
+    
+    function cambiarOpciones1(){
+        if (document.form1.tipoid1.value=='ci')
+        {
+            document.form1.tipoci1.style.visibility='visible';
+            document.form1.id_testigo1.setAttribute("onKeyPress", "return acceptNum(event)");
+            document.form1.id_testigo1.value="";
+        }
+        else
+        {
+            document.form1.tipoci1.style.visibility='hidden';
+            document.form1.id_testigo1.removeAttribute("onKeyPress");
+            document.form1.id_testigo1.value="";
+        }
+    }
+
+    function cambiarOpciones2(){
+        if (document.form1.tipoid2.value=='ci')
+        {
+            document.form1.tipoci2.style.visibility='visible';
+            document.form1.id_testigo2.setAttribute("onKeyPress", "return acceptNum(event)");
+            document.form1.id_testigo2.value="";
+        }
+        else
+        {
+            document.form1.tipoci2.style.visibility='hidden';
+            document.form1.id_testigo2.removeAttribute("onKeyPress");
+            document.form1.id_testigo2.value="";
+        }
+    }
+
+</script>
+
+<script language="javascript" type="text/javascript" src="../js/datetimepicker_css.js"></script>
+
+
+<form id="form1" name="form1" method="post" action="../php/nuevaActaRenuncia.php">
+    <h2 align="center">Nueva Acta de Renuncia a la Nacionalidad Venezolana</h2>
+
+    <table align="center" width="350" border="0">
+
+        <tr>
+            <td>Acta No.</td>
+            <td><input name="acta_no" type="text" id="acta_no" value="{acta_no}" maxlength="10" onKeyPress="return acceptNum(event)"/></td>
+        </tr>
+        <tr>
+            <td width="40">Fecha Actual</td>
+            <td><input name="fecha" id="fecha" type="text" readonly="readonly" ><a href="javascript:NewCssCal('fecha','YYYYMMDD')"><img src="../images/cal.gif" width="16" height="16" border="0" alt="Seleccione una Fecha"></a></td>
+        </tr>
+        <tr>
+            <td>Autoridad Civil</td>
+            <td><select name="autoridad" id="autoridad">
+                    {autoridades}
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td width="40">Identificacion</td>
+            <td width="144">
+                <select name="tipoid" id="tipoid" onchange="cambiarOpciones()">
+                    <option value="ci">C.I.</option>
+                    <option value="p">No. Pasaporte</option>
+                </select>
+                <select name="tipoci" id="tipoci" size="1">
+                    <option value="V-" selected="selected">V-</option>
+                    <option value="E-" >E-</option>
+                </select>
+                <input type="text" maxlength="15" name="id" id="id" value="{id}" onKeyPress="return acceptNum(event)" />
+
+            </td>
+        </tr>
+        <tr>
+            <td width="40">Nombre</td>
+            <td width="144"><input name="nombre" type="text" id="nombre" value="{nombre}" maxlength="50"/></td>
+        </tr>
+        <tr>
+            <td width="40">Apellido</td>
+            <td width="144"><input name="apellido" type="text" id="apellido" value="{apellido}" maxlength="50"/></td>
+        </tr>
+        <tr>
+            <td width="40">Fecha de <br />Nacimiento</td>
+            <td><input name="fecha_n" id="fecha_n" type="text" readonly="readonly" ><a href="javascript:NewCssCal('fecha_n','YYYYMMDD')"><img src="../images/cal.gif" width="16" height="16" border="0" alt="Seleccione una Fecha"></a></td>
+        </tr>
+        <tr>
+            <td width="40">Edo Civil.</td>
+            <td><select name="edo_civil" id="edo_civil">
+                    <option {S} value="S">Soltero(a)</option>
+                    <option {C} value="C">Casado(a)</option>
+                    <option {D} value="D">Divorciado(a)</option>
+                    <option {V} value="V">Viudo(a)</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td width="40">Profesion</td>
+            <td width="144"><input name="profesion" type="text" id="profesion" value="{profesion}" maxlength="50"/></td>
+        </tr>
+        <tr>
+            <td width="40">Domicilio</td>
+            <td width="144"><textarea id="domicilio" name="domicilio" maxlength="200">{domicilio}</textarea></td>
+        </tr>
+        <tr>
+            <td width="40">Nombre completo Testigo 1</td>
+            <td width="144"><input name="testigo1" type="text" id="testigo1" value="{testigo1}" maxlength="50"/></td>
+        </tr>
+        <tr>
+            <td width="40">Nacionalidad Testigo 1</td>
+            <td width="144"><input name="nac_testigo1" type="text" id="nac_testigo1" value="{nac_testigo1}" maxlength="50"/></td>
+        </tr>
+        <tr>
+            <td width="40">Identificacion Testigo 1</td>
+            <td width="144">
+                <select name="tipoid1" id="tipoid1" onchange="cambiarOpciones1()">
+                    <option value="ci">C.I.</option>
+                    <option value="p">No. Pasaporte</option>
+                </select>
+                <select name="tipoci1" id="tipoci1" size="1">
+                    <option value="v" selected="selected">V-</option>
+                    <option value="e" >E-</option>
+                </select>
+                <input type="text" maxlength="15" name="id_testigo1" id="id_testigo1" value="{id_testigo1}" onKeyPress="return acceptNum(event)" />
+
+            </td>
+        </tr>
+        <tr>
+            <td width="40">Nombre completo Testigo 2</td>
+            <td width="144"><input name="testigo2" type="text" id="testigo2" value="{testigo2}" maxlength="50"/></td>
+        </tr>
+        <tr>
+            <td width="40">Nacionalidad Testigo 2</td>
+            <td width="144"><input name="nac_testigo2" type="text" id="nac_testigo2" value="{nac_testigo2}" maxlength="50"/></td>
+        </tr>
+        <tr>
+            <td width="40">Identificacion Testigo 2</td>
+            <td width="144">
+                <select name="tipoid2" id="tipoid2" onchange="cambiarOpciones2()">
+                    <option value="ci">C.I.</option>
+                    <option value="p">No. Pasaporte</option>
+                </select>
+                <select name="tipoci2" id="tipoci2" size="1">
+                    <option value="v" selected="selected">V-</option>
+                    <option value="e" >E-</option>
+                </select>
+                <input type="text" maxlength="15" name="id_testigo2" id="id_testigo2" value="{id_testigo2}" onKeyPress="return acceptNum(event)" />
+
+            </td>
+        </tr>
+    </table>
+    <table align="center" width="400" border="0">
+        <tr>
+            <td colspan="2"><div align="center">
+                    <input type="button" value="Aceptar" onclick="validar()"/>
+                </div></td>
+        </tr>
+    </table>
+    <table align="center" width="228" border="0">
+        <tr>
+            <td width="222" height="21" colspan="2" align="center">
+                <p><a href="../PHP/renuncia.php">Cancelar</a></p>
+            </td>
+        </tr>
+    </table>
+
+</form>

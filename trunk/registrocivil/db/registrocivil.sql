@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 22, 2011 at 07:47 PM
+-- Generation Time: Feb 25, 2012 at 04:59 PM
 -- Server version: 5.1.44
 -- PHP Version: 5.3.1
 
@@ -27,6 +27,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 CREATE TABLE IF NOT EXISTS `adquisicion_nacionalidad` (
   `id` varchar(50) NOT NULL,
+  `tipoid` varchar(3) NOT NULL,
   `acta_no` int(11) NOT NULL,
   `fecha` date NOT NULL,
   `nombre` varchar(50) NOT NULL,
@@ -36,9 +37,11 @@ CREATE TABLE IF NOT EXISTS `adquisicion_nacionalidad` (
   `profesion` varchar(50) NOT NULL,
   `nombre_padre` varchar(50) NOT NULL,
   `id_padre` varchar(50) NOT NULL,
+  `tipoid_padre` varchar(3) NOT NULL,
   `origen_padre` varchar(50) NOT NULL,
   `nombre_madre` varchar(50) NOT NULL,
   `id_madre` varchar(50) NOT NULL,
+  `tipoid_madre` varchar(3) NOT NULL,
   `origen_madre` varchar(50) NOT NULL,
   `origen` varchar(50) NOT NULL,
   `direccion_completa` varchar(200) NOT NULL,
@@ -68,6 +71,7 @@ CREATE TABLE IF NOT EXISTS `autoridad` (
 
 CREATE TABLE IF NOT EXISTS `naturalizacion` (
   `id` varchar(50) NOT NULL,
+  `tipoid` varchar(3) NOT NULL,
   `acta_no` int(11) NOT NULL,
   `fecha` date NOT NULL,
   `contenido` text NOT NULL,
@@ -88,6 +92,7 @@ CREATE TABLE IF NOT EXISTS `naturalizacion` (
 
 CREATE TABLE IF NOT EXISTS `renuncia_nacionalidad` (
   `id` varchar(50) NOT NULL,
+  `tipoid` varchar(3) NOT NULL,
   `acta_no` int(11) NOT NULL,
   `fecha` date NOT NULL,
   `nombre` varchar(50) NOT NULL,
@@ -101,7 +106,9 @@ CREATE TABLE IF NOT EXISTS `renuncia_nacionalidad` (
   `nac_testigo1` varchar(50) NOT NULL,
   `nac_testigo2` varchar(50) NOT NULL,
   `id_testigo1` varchar(50) NOT NULL,
+  `tipoid_testigo1` varchar(3) NOT NULL,
   `id_testigo2` varchar(50) NOT NULL,
+  `tipoid_testigo2` varchar(3) NOT NULL,
   `fk_autoridad` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_autoridad` (`fk_autoridad`)
