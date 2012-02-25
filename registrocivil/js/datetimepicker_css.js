@@ -65,7 +65,7 @@ var UseImageFiles = false;//Use image files with "arrows" and "close" button
 
 //use the Month and Weekday in your preferred language.
 
-var MonthName=["Enero", "Febero", "Marzo", "Abril", "Mayo", "Junio","Julio","Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+var MonthName=["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio","Julio","Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
 var WeekDayName1=["Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sabado"];
 var WeekDayName2=["Lunes","Martes","Miercoles","Jueves","Viernes","Sabado","Domingo"];
 
