@@ -3,21 +3,26 @@
 
     function repetido(id,tipo)
     {
-        
-        alert('Ya existe una Acta de Renuncia a la Nacionalidad Venezolana registrada para '+id);
+        var idcompleto=''
+        if (tipo=='ci')
+            idcompleto='la C.I. Nº '+id;
+        else
+            idcompleto='el Pasaporte Nº '+id;
+        alert('Ya existe una Acta de Renuncia a la Nacionalidad Venezolana registrada para '+idcompleto);
     }
 
 
     function validar()
     {
 
-        if (document.form1.nombre.value.length == 0 || document.form1.apellido.value.length == 0)
+        if (document.form1.acta_no.value.length==0 || document.form1.fecha.value.length==0 || document.form1.id.value.length==0 || document.form1.fecha_n.value.length == 0 || document.form1.nombre.value.length == 0 || document.form1.apellido.value.length == 0 || document.form1.profesion.value.length==0 || document.form1.domicilio.value == '' || document.form1.testigo1.value.length==0 || document.form1.id_testigo1.value.length==0 ||
+            document.form1.nac_testigo1.value.length==0 || document.form1.testigo2.value.length==0 || document.form1.id_testigo2.value.length==0 || document.form1.nac_testigo2.value.length==0)
         {
             alert('Debe llenar todos los campos!');
             return 0;
         }
 
-        var answer = confirm("¿Está seguro(a)?")
+        var answer = confirm("¿Está seguro(a)?");
         if (answer)
             document.form1.submit();
         else
@@ -176,8 +181,8 @@
               <option value="p">No. Pasaporte</option>
             </select>
               <select name="tipoci1" id="tipoci1" size="1">
-                <option value="v" selected="selected">V-</option>
-                <option value="e" >E-</option>
+                <option value="V-" selected="selected">V-</option>
+                <option value="E-" >E-</option>
             </select></td>
         </tr>
         <tr>
@@ -203,8 +208,8 @@
               <option value="p">No. Pasaporte</option>
             </select>
               <select name="tipoci2" id="tipoci2" size="1">
-                <option value="v" selected="selected">V-</option>
-                <option value="e" >E-</option>
+                <option value="V-" selected="selected">V-</option>
+                <option value="E-" >E-</option>
             </select></td>
         </tr>
         <tr>
