@@ -10,7 +10,11 @@
             return 0;
         }
 
-        document.form1.submit();
+        var answer = confirm("¿Está seguro(a)?")
+        if (answer)
+            document.form1.submit();
+        else
+            return 0;
 
     }
 
