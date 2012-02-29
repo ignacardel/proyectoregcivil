@@ -85,29 +85,43 @@
 
 
 <form id="form1" name="form1" method="post" action="../php/nuevaActaRenuncia.php">
-    <h2 align="center">Nueva Acta de Renuncia a la Nacionalidad Venezolana</h2>
+  <h2 align="center">Nueva Acta de Renuncia a la Nacionalidad Venezolana</h2>
 
-    <table align="center" width="350" border="0">
+    <table align="center" width="759" border="0">
 
         <tr>
-            <td>Acta No.</td>
+          <td colspan="4"><strong>Introduzca la siguiente información: </strong></td>
+        </tr>
+        <tr>
+          <td colspan="2">&nbsp;</td>
+          <td colspan="2">&nbsp;</td>
+        </tr>
+        <tr>
+            <td>* Acta No:</td>
             <td><input name="acta_no" type="text" id="acta_no" value="{acta_no}" maxlength="10" onKeyPress="return acceptNum(event)"/></td>
+            <td>* Fecha Actual:</td>
+            <td><input name="fecha" id="fecha" type="text" readonly="readonly" />
+            <a href="javascript:NewCssCal('fecha','YYYYMMDD')"><img src="../images/cal.gif" width="16" height="16" border="0" alt="Seleccione una Fecha" /></a></td>
         </tr>
         <tr>
-            <td width="40">Fecha Actual</td>
-            <td><input name="fecha" id="fecha" type="text" readonly="readonly" ><a href="javascript:NewCssCal('fecha','YYYYMMDD')"><img src="../images/cal.gif" width="16" height="16" border="0" alt="Seleccione una Fecha"></a></td>
-        </tr>
-        <tr>
-            <td>Autoridad Civil</td>
+            <td width="178">* Autoridad Civil:</td>
             <td><select name="autoridad" id="autoridad">
+              
                     {autoridades}
-                </select>
-            </td>
+                
+            </select></td>
+            <td colspan="2">&nbsp;</td>
+        </tr>
+        <tr>
+          <td colspan="4">&nbsp;</td>
+        </tr>
+        <tr>
+            <td colspan="4"> <strong>Datos del solicitante:</strong></td>
         </tr>
 
         <tr>
-            <td width="40">Identificacion</td>
-            <td width="144">
+            <td width="178">* Identificación:</td>
+            <td width="170">
                 <select name="tipoid" id="tipoid" onchange="cambiarOpciones()">
                     <option value="ci">C.I.</option>
                     <option value="p">No. Pasaporte</option>
@@ -115,86 +129,95 @@
                 <select name="tipoci" id="tipoci" size="1">
                     <option value="V-" selected="selected">V-</option>
                     <option value="E-" >E-</option>
-                </select>
-                <input type="text" maxlength="15" name="id" id="id" value="{id}" onKeyPress="return acceptNum(event)" />
-
-            </td>
+                </select></td>
+            <td colspan="2" rowspan="2">&nbsp;</td>
         </tr>
         <tr>
-            <td width="40">Nombre</td>
-            <td width="144"><input name="nombre" type="text" id="nombre" value="{nombre}" maxlength="50"/></td>
+          <td>&nbsp;</td>
+          <td><input type="text" maxlength="15" name="id" id="id" value="{id}" onkeypress="return acceptNum(event)" /></td>
         </tr>
         <tr>
-            <td width="40">Apellido</td>
-            <td width="144"><input name="apellido" type="text" id="apellido" value="{apellido}" maxlength="50"/></td>
+            <td width="178">* Nombres:</td>
+            <td width="170"><input name="nombre" type="text" id="nombre" value="{nombre}" maxlength="50"/></td>
+            <td width="175">* Fecha de Nacimiento:</td>
+            <td width="218"><input name="fecha_n" id="fecha_n" type="text" readonly="readonly" />
+            <a href="javascript:NewCssCal('fecha_n','YYYYMMDD')"><img src="../images/cal.gif" width="16" height="16" border="0" alt="Seleccione una Fecha" /></a></td>
         </tr>
         <tr>
-            <td width="40">Fecha de <br />Nacimiento</td>
-            <td><input name="fecha_n" id="fecha_n" type="text" readonly="readonly" ><a href="javascript:NewCssCal('fecha_n','YYYYMMDD')"><img src="../images/cal.gif" width="16" height="16" border="0" alt="Seleccione una Fecha"></a></td>
+            <td width="178">* Apellidos:</td>
+            <td width="170"><input name="apellido" type="text" id="apellido" value="{apellido}" maxlength="50"/></td>
+            <td width="175">* Estado Civil:</td>
+            <td width="218"><select name="edo_civil" id="edo_civil">
+              <option {s} value="S">Soltero(a)</option>
+              <option {c} value="C">Casado(a)</option>
+              <option {d} value="D">Divorciado(a)</option>
+              <option {v} value="V">Viudo(a)</option>
+            </select></td>
         </tr>
         <tr>
-            <td width="40">Edo Civil.</td>
-            <td><select name="edo_civil" id="edo_civil">
-                    <option {S} value="S">Soltero(a)</option>
-                    <option {C} value="C">Casado(a)</option>
-                    <option {D} value="D">Divorciado(a)</option>
-                    <option {V} value="V">Viudo(a)</option>
-                </select>
-            </td>
+            <td width="178">* Profesión:</td>
+            <td><input name="profesion" type="text" id="profesion" value="{profesion}" maxlength="50"/></td>
+            <td>* Domicilio:</td>
+            <td><textarea id="domicilio" name="domicilio" maxlength="200">{domicilio}</textarea></td>
         </tr>
         <tr>
-            <td width="40">Profesion</td>
-            <td width="144"><input name="profesion" type="text" id="profesion" value="{profesion}" maxlength="50"/></td>
+            <td colspan="4">&nbsp;</td>
         </tr>
         <tr>
-            <td width="40">Domicilio</td>
-            <td width="144"><textarea id="domicilio" name="domicilio" maxlength="200">{domicilio}</textarea></td>
+            <td colspan="2"><strong>Datos del Testigo No.1:</strong></td>
+            <td colspan="2">&nbsp;</td>
         </tr>
         <tr>
-            <td width="40">Nombre completo Testigo 1</td>
-            <td width="144"><input name="testigo1" type="text" id="testigo1" value="{testigo1}" maxlength="50"/></td>
+            <td width="178">* Nombre completo:</td>
+            <td width="170"><input name="testigo1" type="text" id="testigo1" value="{testigo1}" maxlength="50"/></td>
+            <td width="175">* Identificación:</td>
+            <td width="218"><select name="tipoid1" id="tipoid1" onchange="cambiarOpciones1()">
+              <option value="ci">C.I.</option>
+              <option value="p">No. Pasaporte</option>
+            </select>
+              <select name="tipoci1" id="tipoci1" size="1">
+                <option value="v" selected="selected">V-</option>
+                <option value="e" >E-</option>
+            </select></td>
         </tr>
         <tr>
-            <td width="40">Nacionalidad Testigo 1</td>
-            <td width="144"><input name="nac_testigo1" type="text" id="nac_testigo1" value="{nac_testigo1}" maxlength="50"/></td>
+            <td width="178">* Nacionalidad:</td>
+            <td width="170"><input name="nac_testigo1" type="text" id="nac_testigo1" value="{nac_testigo1}" maxlength="50"/></td>
+            <td width="175">&nbsp;</td>
+            <td width="218"><input type="text" maxlength="15" name="id_testigo1" id="id_testigo1" value="{id_testigo1}" onkeypress="return acceptNum(event)" /></td>
         </tr>
         <tr>
-            <td width="40">Identificacion Testigo 1</td>
-            <td width="144">
-                <select name="tipoid1" id="tipoid1" onchange="cambiarOpciones1()">
-                    <option value="ci">C.I.</option>
-                    <option value="p">No. Pasaporte</option>
-                </select>
-                <select name="tipoci1" id="tipoci1" size="1">
-                    <option value="v" selected="selected">V-</option>
-                    <option value="e" >E-</option>
-                </select>
-                <input type="text" maxlength="15" name="id_testigo1" id="id_testigo1" value="{id_testigo1}" onKeyPress="return acceptNum(event)" />
-
-            </td>
+          <td colspan="4">&nbsp;</td>
         </tr>
         <tr>
-            <td width="40">Nombre completo Testigo 2</td>
-            <td width="144"><input name="testigo2" type="text" id="testigo2" value="{testigo2}" maxlength="50"/></td>
+            <td colspan="2"><strong>Datos del Testigo No.2:</strong></td>
+            <td width="175">&nbsp;</td>
+            <td width="218">&nbsp;</td>
         </tr>
         <tr>
-            <td width="40">Nacionalidad Testigo 2</td>
-            <td width="144"><input name="nac_testigo2" type="text" id="nac_testigo2" value="{nac_testigo2}" maxlength="50"/></td>
+            <td width="178">* Nombre completo:</td>
+            <td width="170"><input name="testigo2" type="text" id="testigo2" value="{testigo2}" maxlength="50"/></td>
+            <td width="175">* Identificación:</td>
+            <td width="218"><select name="tipoid2" id="tipoid2" onchange="cambiarOpciones2()">
+              <option value="ci">C.I.</option>
+              <option value="p">No. Pasaporte</option>
+            </select>
+              <select name="tipoci2" id="tipoci2" size="1">
+                <option value="v" selected="selected">V-</option>
+                <option value="e" >E-</option>
+            </select></td>
         </tr>
         <tr>
-            <td width="40">Identificacion Testigo 2</td>
-            <td width="144">
-                <select name="tipoid2" id="tipoid2" onchange="cambiarOpciones2()">
-                    <option value="ci">C.I.</option>
-                    <option value="p">No. Pasaporte</option>
-                </select>
-                <select name="tipoci2" id="tipoci2" size="1">
-                    <option value="v" selected="selected">V-</option>
-                    <option value="e" >E-</option>
-                </select>
-                <input type="text" maxlength="15" name="id_testigo2" id="id_testigo2" value="{id_testigo2}" onKeyPress="return acceptNum(event)" />
-
-            </td>
+            <td width="178">* Nacionalidad:</td>
+            <td width="170"><input name="nac_testigo2" type="text" id="nac_testigo2" value="{nac_testigo2}" maxlength="50"/></td>
+            <td width="175">&nbsp;</td>
+            <td width="218"><input type="text" maxlength="15" name="id_testigo2" id="id_testigo2" value="{id_testigo2}" onkeypress="return acceptNum(event)" /></td>
+        </tr>
+        <tr>
+            <td width="178">&nbsp;</td>
+            <td width="170">&nbsp;</td>
+            <td width="175">&nbsp;</td>
+            <td width="218">&nbsp;</td>
         </tr>
     </table>
     <table align="center" width="400" border="0">
@@ -202,8 +225,8 @@
             <td colspan="2"><div align="center">
                     <input type="button" value="Aceptar" onclick="validar()"/>
                 </div></td>
-        </tr>
-    </table>
+      </tr>
+  </table>
     <table align="center" width="228" border="0">
         <tr>
             <td width="222" height="21" colspan="2" align="center">
