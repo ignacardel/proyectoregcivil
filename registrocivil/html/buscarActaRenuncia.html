@@ -48,6 +48,9 @@ function cambiarOpciones(){
 .italico {
 	font-style: italic;
 }
+.izquiera {
+	text-align: left;
+}
 </style>
 
 
@@ -57,19 +60,8 @@ function cambiarOpciones(){
 <form id="form1" name="form1" method="post" action="../php/buscarActaRenuncia.php">
     <table width="902" border="0">
         <tr>
-            <th height="54" colspan="6" scope="col"><a href="../php/nuevaActaRenuncia.php">Nueva acta</a></th>
-        </tr>
-        <tr>
-            <th>
-                <select name="tipoid" id="tipoid" onchange="cambiarOpciones()">
-                    <option value="ci">C.I.</option>
-                    <option value="p">No. Pasaporte</option>
-                </select>
-                <select name="tipoci" id="tipoci" size="1">
-                    <option value="v" selected="selected">V-</option>
-                    <option value="e" >E-</option>
-                </select>
-                <input type="text" maxlength="15" name="id_buscar" id="id_buscar" onKeyPress="return acceptNum(event)" />              <input type="button" value="Buscar Acta" onclick="validar()"/></th>
+            <th height="54" class="izquiera" scope="col"><p><a href="#">Imprimir Libro: Acta de Renuncia a la Nacionalidad Venezonala</a></p>
+            <p><a href="#">Imprimir Copia Certificada: Acta de Renuncia a la Nacionalidad Venezonala</a></p></th>
         </tr>
     </table>
 </form>
