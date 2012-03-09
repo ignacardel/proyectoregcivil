@@ -41,6 +41,5 @@ if ($id) {
 }
 
 
-
 include "../db/cerrar_conexion.php";
 ?>
