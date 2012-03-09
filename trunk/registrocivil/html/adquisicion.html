@@ -11,7 +11,7 @@
     function validar()
     {
 
-        if (document.form1.id_buscar.value.length == 0)
+        if (document.form1.id.value.length == 0)
         {
             return 0;
         }
@@ -33,22 +33,25 @@ function cambiarOpciones(){
     if (document.form1.tipoid.value=='ci')
     {
         document.form1.tipoci.style.visibility='visible';
-        document.form1.id_buscar.setAttribute("onKeyPress", "return acceptNum(event)");
-        document.form1.id_buscar.value="";
+        document.form1.id.setAttribute("onKeyPress", "return acceptNum(event)");
+        document.form1.id.value="";
     }
     else
     {
         document.form1.tipoci.style.visibility='hidden';
-        document.form1.id_buscar.removeAttribute("onKeyPress");
-        document.form1.id_buscar.value="";
+        document.form1.id.removeAttribute("onKeyPress");
+        document.form1.id.value="";
     }
 }
+
+
+
 </script>
 
 
 
 <h2 align="center">Declaración de Acogerse a la Nacionalidad Venezolana Por Nacimiento</h2>
-<form id="form1" name="form1" method="post" action="../php/buscarAdquisicion.php">
+<form id="form1" name="form1" method="post" action="../php/buscarActaAdquisicion.php">
     <table width="902" border="0">
         <tr>
             <th height="54" colspan="6" scope="col"><a href="../PHP/nuevaActaAdquisicion.php">Nueva acta</a></th>
@@ -60,10 +63,10 @@ function cambiarOpciones(){
                     <option value="p">No. Pasaporte</option>
                 </select>
                 <select name="tipoci" id="tipoci" size="1">
-                    <option value="v" selected="selected">V-</option>
-                    <option value="e" >E-</option>
+                    <option value="V-" selected="selected">V-</option>
+                    <option value="E-" >E-</option>
                 </select>
-                <input type="text" maxlength="15" name="id_buscar" id="id_buscar" onKeyPress="return acceptNum(event)" />
+                <input type="text" maxlength="15" name="id" id="id" onKeyPress="return acceptNum(event)" />
                 <input type="button" value="Buscar Acta" onclick="validar()"/></th>
         </tr>
     </table>
