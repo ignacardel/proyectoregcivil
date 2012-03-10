@@ -27,8 +27,8 @@ if ($id) {
         $pnlcontenido = new Panel("../html/buscarActaAdquisicion.html");
 
         $pnlcontenido->add("solicitante", $row['nombre'] . ' ' . $row['apellido']);
-        $pnlcontenido->add("libro","/registrocivil/php/imprimirLibroActaAdquisicion?id=".$idcompleto);
-        $pnlcontenido->add("copia","/registrocivil/php/imprimirCopiaActaAdquisicion?id=".$idcompleto);
+        $pnlcontenido->add("libro","/registrocivil/php/imprimirLibroActaAdquisicion.php?id=".$idcompleto);
+        $pnlcontenido->add("copia","/registrocivil/php/imprimirCopiaActaAdquisicion.php?id=".$idcompleto);
 
 
         $plantilla->add("contenido", $pnlcontenido);
@@ -36,7 +36,7 @@ if ($id) {
 
         
     } else {
-        echo "<script type=\"text/javascript\">alert(\"No existe una Acta de Adqusicion a la Nacionalidad Venezolana registrada para la C.I. o Pasaporte introducido\"); window.location='renuncia.php';</script>";
+        echo "<script type=\"text/javascript\">alert(\"No existe una Acta de la Declaración de Acogerse a la Nacionalidad Venezolana Por Nacimiento para la C.I. o Pasaporte introducido\"); window.location='adquisicion.php';</script>";
     }
 }
 

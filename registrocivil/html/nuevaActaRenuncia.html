@@ -15,7 +15,7 @@
     function validar()
     {
 
-        if (document.form1.acta_no.value.length==0 || document.form1.fecha.value.length==0 || document.form1.id.value.length==0 || document.form1.fecha_n.value.length == 0 || document.form1.nombre.value.length == 0 || document.form1.apellido.value.length == 0 || document.form1.profesion.value.length==0 || document.form1.domicilio.value == '' || document.form1.testigo1.value.length==0 || document.form1.id_testigo1.value.length==0 ||
+        if (document.form1.acta_no.value.length==0 || document.form1.id.value.length==0 || document.form1.fecha_n.value.length == 0 || document.form1.nombre.value.length == 0 || document.form1.apellido.value.length == 0 || document.form1.profesion.value.length==0 || document.form1.domicilio.value == '' || document.form1.testigo1.value.length==0 || document.form1.id_testigo1.value.length==0 ||
             document.form1.nac_testigo1.value.length==0 || document.form1.testigo2.value.length==0 || document.form1.id_testigo2.value.length==0 || document.form1.nac_testigo2.value.length==0)
         {
             alert('Debe llenar todos los campos!');
@@ -104,16 +104,8 @@
           <td colspan="5"><strong>Introduzca la siguiente información: </strong></td>
         </tr>
         <tr>
-          <td colspan="2">&nbsp;</td>
-          <td colspan="3">&nbsp;</td>
-        </tr>
-        <tr>
             <td><span class="asterisco">*</span> Acta No:</td>
             <td><input name="acta_no" type="text" id="acta_no" value="{acta_no}" maxlength="10" onKeyPress="return acceptNum(event)"/></td>
-            <td><span class="asterisco">*</span> Fecha Actual:</td>
-            <td><input name="fecha" id="fecha" type="text" readonly="readonly" />
-            <a href="javascript:NewCssCal('fecha','YYYYMMDD')"><img src="../images/cal.gif" width="16" height="16" border="0" alt="Seleccione una Fecha" /></a></td>
-            <td>&nbsp;</td>
         </tr>
         <tr>
             <td width="168"> <span class="asterisco">*</span> Autoridad Civil:</td>
@@ -152,10 +144,10 @@
             <td width="170">&nbsp;</td>
             <td width="177"><span class="asterisco">*</span> Estado Civil:</td>
             <td width="186"><select name="edo_civil" id="edo_civil">
-              <option {s} value="S">Soltero(a)</option>
-              <option {c} value="C">Casado(a)</option>
-              <option {d} value="D">Divorciado(a)</option>
-              <option {v} value="V">Viudo(a)</option>
+              <option {s} value="Soltero(a)">Soltero(a)</option>
+              <option {c} value="Casado(a)">Casado(a)</option>
+              <option {d} value="Divorciado(a)">Divorciado(a)</option>
+              <option {v} value="Viudo(a)">Viudo(a)</option>
             </select></td>
         </tr>
         <tr>
