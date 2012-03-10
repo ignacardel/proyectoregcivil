@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Feb 25, 2012 at 04:59 PM
+-- Generation Time: Mar 10, 2012 at 04:46 AM
 -- Server version: 5.1.44
 -- PHP Version: 5.3.1
 
@@ -98,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `renuncia_nacionalidad` (
   `nombre` varchar(50) NOT NULL,
   `apellido` varchar(50) NOT NULL,
   `fecha_nac` date NOT NULL,
-  `edo_civil` varchar(1) NOT NULL,
+  `edo_civil` varchar(20) NOT NULL,
   `profesion` varchar(50) NOT NULL,
   `domicilio` varchar(200) NOT NULL,
   `testigo1` varchar(50) NOT NULL,

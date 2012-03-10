@@ -60,7 +60,7 @@ if (($id) && ($nombre) && ($apellido)) {
         else
             $idcompleto_testigo2=$id_testigo2;
 
-        mysql_query("INSERT INTO renuncia_nacionalidad  VALUES ('$idcompleto','$tipoid','$acta_no','$fecha',
+        mysql_query("INSERT INTO renuncia_nacionalidad  VALUES ('$idcompleto','$tipoid','$acta_no',curdate(),
                     '$nombre','$apellido','$fecha_n','$edo_civil','$profesion','$domicilio','$testigo1','$testigo2',
                     '$nac_testigo1','$nac_testigo2','$idcompleto_testigo2','$tipoid1','$idcompleto_testigo2','$tipoid2','$autoridad');");
         echo "<script type=\"text/javascript\">alert(\"Operacion realizada con éxito\"); window.location='renuncia.php';</script>";

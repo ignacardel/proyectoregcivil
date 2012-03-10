@@ -27,8 +27,8 @@ if ($id) {
         $pnlcontenido = new Panel("../html/buscarActaRenuncia.html");
 
         $pnlcontenido->add("solicitante", $row['nombre'] . ' ' . $row['apellido']);
-        $pnlcontenido->add("libro","/registrocivil/php/imprimirLibroActaRenuncia?id=".$idcompleto);
-        $pnlcontenido->add("copia","/registrocivil/php/imprimirCopiaActaRenuncia?id=".$idcompleto);
+        $pnlcontenido->add("libro","/registrocivil/php/imprimirLibroActaRenuncia.php?id=".$idcompleto);
+        $pnlcontenido->add("copia","/registrocivil/php/imprimirCopiaActaRenuncia.php?id=".$idcompleto);
 
 
         $plantilla->add("contenido", $pnlcontenido);

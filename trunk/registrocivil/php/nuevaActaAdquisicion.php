@@ -60,7 +60,7 @@ if (($id) && ($nombre) && ($apellido)) {
         else
             $idcompleto_padre=$id_padre;
 
-        mysql_query("INSERT INTO adquisicion_nacionalidad  VALUES ('$idcompleto','$tipoid','$acta_no','$fecha',
+        mysql_query("INSERT INTO adquisicion_nacionalidad  VALUES ('$idcompleto','$tipoid','$acta_no',curdate(),
                     '$nombre','$apellido','$fecha_n','$edo_civil','$profesion','$padre', '$idcompleto_padre',
 					'$tipoidpadre', '$nac_padre', '$madre', '$idcompleto_madre', '$tipoidmadre','$nac_madre', 
 					'$origen','$domicilio','$autoridad');");
