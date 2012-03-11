@@ -18,6 +18,8 @@ $autoridad=strtoupper($row2['nombre'].' '.$row2['apellido']);
 
 $acta_no="(".$row['acta_no'].") ".ucfirst(NumeroALetras($row['acta_no']));
 
+$folio="XXX";
+
 $fecha=strtotime($row['fecha']);
 setlocale(LC_ALL, 'es_ES.UTF-8');
 $fechacompleta=NumeroALetras(date("j", $fecha)).' de '.ucfirst(strftime("%B",$fecha)).' de '.NumeroALetras(date("Y", $fecha));
@@ -56,16 +58,23 @@ else
 $nac_testigo2=$row['nac_testigo2'];
 
 
-$fechacompleta2="En San Antonio de Los Altos, a los ".NumeroALetras(date("j", $fecha)).' días del mes de '.ucfirst(strftime("%B",$fecha)).' de '.NumeroALetras(date("Y", $fecha)).'.';
-$fechacompleta2=utf8_decode($fechacompleta2);
+$fechacompleta2="En San Antonio de Los Altos, a los ".NumeroALetras(date("j", $fecha)).' días del mes de '.ucfirst(strftime("%B",$fecha)).' de '.NumeroALetras(date("Y", $fecha));
 
+
+$encabezadocopia="Quien Suscribe ".$row2['nombre'].' '.$row2['apellido']." Registrador(a) Civil del Municipio Los Salias Según Resolución Nº 073/2006, publicada en Gaceta Municipal Nº 08/03, Año 23, de fecha 17 de Marzo de 2006 CERTIFICA la autenticidad del acta que a continuación se copia: ";
+
+$cierrecopia="Es copia fiel y exacta de su original que aparece en los Libros de Nacionalidad llevados por este despacho durante el año ".
+    date("Y", $fecha)." bajo el Acta Nº ".$row['acta_no']." Al folio Nº ".$folio." Que se expide ".lcfirst($fechacompleta2)." Años 1810 y 1859.";
 
 $contenido="Acta No. ".$acta_no.", ".$autoridad.", actuando en mi carácter de Registrador(a) Civil en el Municipio Los Salias, del Estado Bolivariano de Miranda, según consta en resolución Nº 073/2006, publicada en Gaceta Municipal Nº 08/03, Año 23, de fecha 17 de Marzo de 2006, y en ejercicio de la disposición legal contenida en los artículos 5 ó 7 de la Resolución Número 081214-1137 emanada del Poder Electoral, de fecha 15 de Diciembre de 2008 y publicada en Gaceta Oficial Número 39.097, de fecha 13 de Enero de 2009, hago constar que hoy "
 .$fechacompleta.", se ha presentado el(la) ciudadano(a) ".$nombrecompleto.", de Nacionalidad Venezolana por nacimiento/naturalización, de ".$edad.
 " años de edad, de estado civil ".$edo_civil.", de profesión ".$profesion.", titular ".$idcompleto.", domiciliado(a) en ".$row['domicilio'].
 ", y expone: Declaro mi voluntad de renunciar a la nacionalidad venezolana por nacimiento/naturalización y fundo mi petición de conformidad con el artículo 36 de la Constitución de la República Bolivariana de Venezuela; 14 y 46 de la Ley de Nacionalidad y Ciudadanía. Los testigos presenciales de este acto "
 .$testigo1.", de Nacionalidad ".$nac_testigo1.", titular ".$idcompleto_testigo1." y ".$testigo2.", de Nacionalidad ".$nac_testigo2.", titular "
-.$idcompleto_testigo2.". Leída la presente Acta al Renunciante y a los Testigos, manifestaron todos su conformidad y en consecuencia firman.";
+.$idcompleto_testigo2.". Leída la presente Acta al Renunciante y a los Testigos, manifestaron todos su conformidad y en consecuencia firman. El(la) Registrador(a) Civil del Municipio Los Salias "
+.$row2['nombre'].' '.$row2['apellido']." (fdo) Ilegible. El Renunciante: ".$nombrecompleto." (fdo) ilegible. Los testigos (fdos) ilegibles. La Secretaria (fdo) ilegible. ";
+
+$contenido=$encabezadocopia.$contenido.$cierrecopia;
 
 $contenido = utf8_decode($contenido);
 
@@ -88,16 +97,15 @@ $pdf->Ln(15);
 
 $pdf->MultiCell(0, 5, $contenido, 'J');
 
-$pdf->MultiCell(0, 5, $fechacompleta2, 'J');
-
 $pdf->Ln();
 $pdf->Ln();
 $pdf->Ln();
 
-$pdf->Cell(0, 0, 'Registrador(a) Civil del Municipio Los Salias del Estado Bolivariano de Miranda', 0, 0, 'C');
-$pdf->Ln();
-$pdf->MultiCell(0, 30, "                 El Renunciante                                                                                                                                    Los Testigos", 'J');
-$pdf->Cell(0, 0, 'La Secretaria', 0, 0, 'C');
+
+$pdf->Cell(0, 0, $autoridad, 0, 1, 'C');
+
+$pdf->Cell(0, 10, 'Registrador(a) Civil del Municipio Los Salias del Estado Bolivariano de Miranda', 0, 0, 'C');
+
 
 $pdf->Output('Acta_Renuncia_' . $nombre . '.pdf', 'I');
 
