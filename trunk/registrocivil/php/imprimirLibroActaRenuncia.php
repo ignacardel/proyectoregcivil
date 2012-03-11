@@ -56,7 +56,7 @@ else
 $nac_testigo2=$row['nac_testigo2'];
 
 
-$fechacompleta2="En San Antonio de Los Altos, a los ".NumeroALetras(date("j", $fecha)).' días del mes de '.ucfirst(strftime("%B",$fecha)).' de '.NumeroALetras(date("Y", $fecha));
+$fechacompleta2="En San Antonio de Los Altos, a los ".NumeroALetras(date("j", $fecha)).' días del mes de '.ucfirst(strftime("%B",$fecha)).' de '.NumeroALetras(date("Y", $fecha)).'.';
 $fechacompleta2=utf8_decode($fechacompleta2);
 
 

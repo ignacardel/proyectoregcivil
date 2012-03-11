@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 10, 2012 at 04:46 AM
+-- Generation Time: Mar 11, 2012 at 02:18 AM
 -- Server version: 5.1.44
 -- PHP Version: 5.3.1
 
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `adquisicion_nacionalidad` (
   `nombre` varchar(50) NOT NULL,
   `apellido` varchar(50) NOT NULL,
   `fecha_nac` date NOT NULL,
-  `edo_civil` varchar(1) NOT NULL,
+  `edo_civil` varchar(20) NOT NULL,
   `profesion` varchar(50) NOT NULL,
   `nombre_padre` varchar(50) NOT NULL,
   `id_padre` varchar(50) NOT NULL,
