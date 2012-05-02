@@ -10,9 +10,9 @@ extract($_POST);
 
 if (($id) && ($nombre) && ($apellido)) {
 
-
+    //En la BD las cedulas de identidad se guardan con el prefijo V- o E-
     $idcompleto="";
-    
+
     if ($tipoid=='ci')
         $idcompleto=$tipoci.$id;
     else
@@ -21,7 +21,8 @@ if (($id) && ($nombre) && ($apellido)) {
 
     $result = mysql_query("SELECT * FROM renuncia_nacionalidad WHERE id = '$idcompleto'");
     $row = mysql_fetch_array($result);
-    if ($row) {
+    if ($row) { //Si la solicitud ya existe se recarga la pagina con los datos insertados
+                // y se envia un mensaje de error atraves de la funcion repetido()
         $plantilla = new Panel("../html/plantilla.htm");
         
         $plantilla->add("onload",'onload="repetido('."'".$idcompleto."'".','."'".$tipoid."'".')"');
@@ -30,6 +31,7 @@ if (($id) && ($nombre) && ($apellido)) {
 
         $result = mysql_query("SELECT * FROM autoridad");
         $autoridades = '';
+        //Se llena el combobox de Autoridades Civiles
         while ($row = mysql_fetch_array($result)) {
             $autoridad = '<option value="' . $row["ci"] . '">' . $row["nombre"] . ' ' . $row["apellido"] . '</option>';
             $autoridades = $autoridades . $autoridad;
@@ -40,12 +42,12 @@ if (($id) && ($nombre) && ($apellido)) {
         $pnlcontenido->add("nombre", $nombre);
         $pnlcontenido->add("apellido", $apellido);
 
-        //$pnlcontenido->add("mensaje", 'Ya existe una Autoridad Civil registrada con la C.I. ' . $ci);
         $plantilla->add("contenido", $pnlcontenido);
         $plantilla->show();
 
-    } else {
+    } else { //Si no existe, se inserta en BD
 
+        //En la BD las cedulas de identidad se guardan con el prefijo V- o E-
         $idcompleto_testigo1 = "";
 
         if ($tipoid1 == 'ci')
@@ -65,14 +67,14 @@ if (($id) && ($nombre) && ($apellido)) {
                     '$nac_testigo1','$nac_testigo2','$idcompleto_testigo1','$tipoid1','$idcompleto_testigo2','$tipoid2','$autoridad');");
         echo "<script type=\"text/javascript\">alert(\"Operacion realizada con éxito\"); window.location='renuncia.php';</script>";
     }
-}  else {
+}  else { //Si no se reciben datos, la pantalla se esta cargando por primera vez
     
     $plantilla = new Panel("../html/plantilla.htm");
     $pnlcontenido = new Panel("../html/nuevaActaRenuncia.html");
 
     $result = mysql_query("SELECT * FROM autoridad");
     $autoridades = '';
-
+    //Se llena el combobox de Autoridades Civiles
     while ($row = mysql_fetch_array($result)) {
         $autoridad = '<option value="' . $row["ci"] . '">' . $row["nombre"] . ' ' . $row["apellido"] . '</option>';
         $autoridades = $autoridades . $autoridad;

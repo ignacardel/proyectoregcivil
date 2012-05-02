@@ -5,23 +5,30 @@ include "../DB/conexion.php";
 require('../fpdf16/fpdf.php');
 require('funciones.php');
 
+//Apoyado por la libreria FPDF, se construye el PDF correspondiente al original
+//del Acta de Renuncia a la Nacionalidad Venezolana
 
 extract($_REQUEST);
 
+//Se obtienen los datos del Acta
 $result = mysql_query("SELECT * FROM renuncia_nacionalidad WHERE id = '$id'");
 $row = mysql_fetch_array($result);
 
+//Se obtienen los datos de la Autoridad Civil
 $result2 = mysql_query("SELECT * FROM autoridad WHERE ci = '$row[fk_autoridad]'");
 $row2 = mysql_fetch_array($result2);
 
+//Nombre completo de la Autoridad Civil
 $autoridad=strtoupper($row2['nombre'].' '.$row2['apellido']);
 
+//Le sigue a Acta No.
 $acta_no="(".$row['acta_no'].") ".ucfirst(NumeroALetras($row['acta_no']));
 
 $fecha=strtotime($row['fecha']);
 setlocale(LC_ALL, 'es_ES.UTF-8');
 $fechacompleta=NumeroALetras(date("j", $fecha)).' de '.ucfirst(strftime("%B",$fecha)).' de '.NumeroALetras(date("Y", $fecha));
 
+//Datos del solicitante
 $nombrecompleto=strtoupper($row['nombre'].' '.$row['apellido']);
 
 $edad=NumeroALetras(CalcularEdad($row['fecha_nac'], $row['fecha']));
@@ -36,7 +43,7 @@ else
     $idcompleto='del pasaporte venezolano Nº '.$row['id'];
 
 
-
+//Datos del testigo 1
 $testigo1=strtoupper($row[testigo1]);
 
 if ($row['tipoid_testigo1'] == 'ci')
@@ -46,6 +53,7 @@ else
 
 $nac_testigo1=$row['nac_testigo1'];
 
+//Datos del testigo 2
 $testigo2=strtoupper($row[testigo2]);
 
 if ($row['tipoid_testigo2'] == 'ci')
@@ -67,6 +75,7 @@ $contenido="Acta No. ".$acta_no.", ".$autoridad.", actuando en mi carácter de R
 .$testigo1.", de Nacionalidad ".$nac_testigo1.", titular ".$idcompleto_testigo1." y ".$testigo2.", de Nacionalidad ".$nac_testigo2.", titular "
 .$idcompleto_testigo2.". Leída la presente Acta al Renunciante y a los Testigos, manifestaron todos su conformidad y en consecuencia firman.";
 
+//Necesario para los acentos
 $contenido = utf8_decode($contenido);
 
 
