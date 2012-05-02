@@ -5,25 +5,34 @@ include "../DB/conexion.php";
 require('../fpdf16/fpdf.php');
 require('funciones.php');
 
+//Apoyado por la libreria FPDF, se construye el PDF correspondiente a la Copia Certificada
+//del Acta de Renuncia a la Nacionalidad Venezolana
 
 extract($_REQUEST);
 
+//Se obtienen los datos del Acta
 $result = mysql_query("SELECT * FROM renuncia_nacionalidad WHERE id = '$id'");
 $row = mysql_fetch_array($result);
 
+//Se obtienen los datos de la Autoridad Civil
 $result2 = mysql_query("SELECT * FROM autoridad WHERE ci = '$row[fk_autoridad]'");
 $row2 = mysql_fetch_array($result2);
 
+//Nombre completo de la Autoridad Civil
 $autoridad=strtoupper($row2['nombre'].' '.$row2['apellido']);
 
+//Le sigue a Acta No.
 $acta_no="(".$row['acta_no'].") ".ucfirst(NumeroALetras($row['acta_no']));
 
+//El no. de folio no se maneja en la BD en estos momentos
 $folio="XXX";
 
 $fecha=strtotime($row['fecha']);
 setlocale(LC_ALL, 'es_ES.UTF-8');
 $fechacompleta=NumeroALetras(date("j", $fecha)).' de '.ucfirst(strftime("%B",$fecha)).' de '.NumeroALetras(date("Y", $fecha));
 
+
+//Datos del solicitante
 $nombrecompleto=strtoupper($row['nombre'].' '.$row['apellido']);
 
 $edad=NumeroALetras(CalcularEdad($row['fecha_nac'], $row['fecha']));
@@ -38,7 +47,7 @@ else
     $idcompleto='del pasaporte venezolano Nº '.$row['id'];
 
 
-
+//Datos del testigo 1
 $testigo1=strtoupper($row[testigo1]);
 
 if ($row['tipoid_testigo1'] == 'ci')
@@ -48,6 +57,8 @@ else
 
 $nac_testigo1=$row['nac_testigo1'];
 
+
+//Datos del testigo 2
 $testigo2=strtoupper($row[testigo2]);
 
 if ($row['tipoid_testigo2'] == 'ci')
@@ -76,6 +87,7 @@ $contenido="Acta No. ".$acta_no.", ".$autoridad.", actuando en mi carácter de R
 
 $contenido=$encabezadocopia.$contenido.$cierrecopia;
 
+//Necesario para los acentos
 $contenido = utf8_decode($contenido);
 
 
@@ -95,6 +107,7 @@ $pdf->Cell(195, 12, 'ACTA DE RENUNCIA A LA NACIONALIDAD VENEZOLANA', 0, 0, 'C');
 $pdf->SetFont('Times', '', 10);
 $pdf->Ln(15);
 
+//En esta celda se imprime el contenido del Acta
 $pdf->MultiCell(0, 5, $contenido, 'J');
 
 $pdf->Ln();

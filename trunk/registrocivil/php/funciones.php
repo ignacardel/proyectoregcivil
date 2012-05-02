@@ -1,5 +1,6 @@
 <?php
 
+//Calcula la edad dada una fecha inicio y una fecha fin
  function CalcularEdad($fecha_n,$fecha) {
      
     $y=date('Y', strtotime($fecha));
@@ -23,6 +24,7 @@
     return $edad;
 }
 
+//Obtiene representacion en letras de un numero
 function NumeroALetras($n) {
 
     $cent = array(

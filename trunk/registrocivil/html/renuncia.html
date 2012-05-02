@@ -1,5 +1,6 @@
 <script language="javascript">
 
+//Evita que se envie el formulario al presionar la tecla Enter
     function stopRKey(evt) {
         var evt = (evt) ? evt : ((event) ? event : null);
         var node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null);
@@ -8,6 +9,7 @@
 
     document.onkeypress = stopRKey;
 
+//Valida el envio del formulario de busqueda de acta
     function validar()
     {
 
@@ -22,13 +24,15 @@
 
 var nav4 = window.Event ? true : false;
 
+//Valida que solo se ingresen numeros
 function acceptNum(evt){
     // NOTE: Backspace = 8, Enter = 13, '0' = 48, '9' = 57
     var key = nav4 ? evt.which : evt.keyCode;
     return (key <= 13 || (key >= 48 && key <= 57));
 }
 
-
+//Cuando el tipo de identificacion es la Cedula de Identidad, no se permiten letras
+//Si es Pasaporte, si pueden ingresarse letras
 function cambiarOpciones(){
     if (document.form1.tipoid.value=='ci')
     {

@@ -5,6 +5,7 @@
        alert('Ya existe una Autoridad Civil registrada\ncon la C.I. Nº '+ci);
     }
 
+//Valida el envio del formulario
     function validar()
     {
 
@@ -23,6 +24,8 @@
     }
 
     var nav4 = window.Event ? true : false;
+
+    //Valida que solo se ingresen numeros
     function acceptNum(evt){
         // NOTE: Backspace = 8, Enter = 13, '0' = 48, '9' = 57
         var key = nav4 ? evt.which : evt.keyCode;

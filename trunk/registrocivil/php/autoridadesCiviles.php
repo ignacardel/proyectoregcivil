@@ -5,6 +5,7 @@ $pathFix = dirname(__FILE__);
 require_once ("../classes/Panel.php");
 include "../db/conexion.php";
 
+//Se carga la pantalla de listado de Autoridades Civiles
 
 $plantilla = new Panel("../html/plantilla.htm");
 
